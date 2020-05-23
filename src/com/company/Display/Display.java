@@ -4,31 +4,58 @@ import java.util.Scanner;
 
 public class Display {
     Scanner scanner = new Scanner(System.in);
-    public void startScreen(){
+
+    public int startScreen() {
         System.out.println("Welcome to the ATM machine.\n" +
-                "---------------------------\n"+
-                        "Enter number to select feature.\n\n" +
+                "---------------------------\n" +
+                "Enter number to select feature.\n\n" +
                 "1. Login\n" +
                 "2. Create Account\n"
-                );
+        );
         int num = Integer.parseInt(scanner.nextLine());
-        if(num==1){
-            loginScreen();
-        }
-        else if(num==2){
-            CreateAccount();
-        }
-        else{
+
+        if (num != 1 && num != 2) {
             System.out.println("Error, Enter valid number.\n");
             startScreen();
         }
-
+        return num;
     }
 
-    private void CreateAccount() {
+
+    public String displayEnterPin() {
+        String pin;
+        do {
+            System.out.println("Choose your 4 digit pin ");
+            pin = scanner.nextLine();
+            if (pin.length() != 4 || !pin.matches("[0-9]+")) {
+                System.out.println("Invalid pin");
+            }
+        } while (pin.length() != 4 || !pin.matches("[0-9]+"));
+
+        return pin;
     }
 
-    public void loginScreen(){
+    public String[] displayEnterName() {
+        String name;
+        String[] names;
+        do {
+            System.out.println("Enter your Title, First Name and Last Name\n" +
+                    "Example: Mr. John Smith");
+            name = scanner.nextLine();
+            names = name.split(" ");
+            if (names.length != 3 || !names[0].contains(".")) {
+                System.out.println("Error. Please Enter in format exampled");
+            }
+        }
+        while (names.length != 3 || !names[0].contains("."));
+        return names;
+    }
 
+    public void displayLoginScreen() {
+
+    }
+    public void displayAccountMade(int accountNumber){
+        System.out.println("You have successfully created an account\n" +
+                "Your account number is: " +accountNumber);
     }
 }
