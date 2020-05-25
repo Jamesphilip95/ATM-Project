@@ -1,5 +1,6 @@
 package com.company.Display;
 
+
 import java.util.Scanner;
 
 public class Display {
@@ -51,11 +52,46 @@ public class Display {
         return names;
     }
 
-    public void displayLoginScreen() {
+    public int displayLoginScreen1() {
+        System.out.println("Login\n" +
+                "Please enter your account number:");
+        return Integer.parseInt(scanner.nextLine());
+    }
+//
+
+    public String displayLoginScreen2() {
+        System.out.println("Please enter your pin");
+        return scanner.nextLine();
+    }
+
+
+
+
+    public int displayWrongAccountNumber(){
+        System.out.println("No account under this number\n" +
+                    "1. Type in number again\n" +
+                    "2. Create an account");
+            return Integer.parseInt(scanner.nextLine());
 
     }
     public void displayAccountMade(int accountNumber){
         System.out.println("You have successfully created an account\n" +
                 "Your account number is: " +accountNumber);
+    }
+
+    public void displayMainMenu(){
+        System.out.println("You have successfully logged in.\n" +
+                "---------------------------\n" +
+                "Enter number to select feature.\n\n" +
+                "1. Withdraw money\n" +
+                "2. Add money\n" +
+                "3. Check balance\n" +
+                "4. Transfer money\n" +
+                "5. Return Card"
+        );
+    }
+
+    public void displayWrongPin() {
+        System.out.println("You have entered the wrong pin");
     }
 }
